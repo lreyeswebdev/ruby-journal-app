@@ -9,7 +9,12 @@ class CategoryTest < ActiveSupport::TestCase
   test "should not save category without name" do
     category = Category.new
     assert_not category.save
-  end  
+  end
+  
+  test "should not save category without description" do
+    category = @category
+    assert_not category.save
+  end
 
   test "name should be unique" do
     duplicate_category = @category.dup
