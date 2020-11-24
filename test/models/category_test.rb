@@ -16,4 +16,9 @@ class CategoryTest < ActiveSupport::TestCase
     assert_not duplicate_category.valid?
   end
 
+  test "should save category with valid params" do
+    category = Category.create(name: 'sample', description: 'sample for the happy path')
+    assert category.save
+  end
+
 end
