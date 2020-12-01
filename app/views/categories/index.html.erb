@@ -1,24 +1,32 @@
-<%= link_to 'New Category', new_category_path %>
-<br>
-<table>
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Description</th>
-        </tr>
-    </thead>
+<div class = "columns is-centered mt-6">
+    <div class = "column is-half">
+    <h1 class = "is-size-2 has-text-weight-bold mb-3">Categories</h1>
+    	<br>
+    	<div class = "container">
+			<table class = "table is-striped is-bordered is-fullwidth">
+    			<thead>
+        			<tr class="th is-selected">
+            
+            			<th>Category</th>
+            			<th>Description</th>
+            			<th>Actions</th>
+        			</tr>
+    			</thead>
 
-    <tbody>
-        <%= @categories.each do |category| %>
-            <tr>
-                <td><%= category.id %></td>
-                <td><%= category.name %></td>
-                <td><%= category.description %></td>
-                <td><%= link_to 'Edit', edit_category_path(category) %></td>
-                <td><%= link_to 'Show', show_category_path(category) %></td>
-                <td><%= link_to 'Delete', delete_category_path(category), method: :delete, data: {confirm: "Are you sure?"} %></td>
-            </tr>
-        <% end %>
-    </tbody>
-<table>
+    			<tbody>
+        			<% @categories.each do |category| %>
+            		<tr>
+                
+                		<td><%= link_to category.name, show_category_path(category) %></td>
+                		<td><%= category.description %></td>
+                		<td>
+                    		<%= link_to 'Edit', edit_category_path(category), class: "button is-small is-warning" %>
+                    		<%= link_to 'Delete', delete_category_path(category), method: :delete, data: {confirm: "Are you sure?"}, class: "button is-small is-danger" %>
+                		</td>
+            		</tr>
+        			<% end %>
+    			</tbody>
+			<table>
+		</div>
+	</div>
+</div>

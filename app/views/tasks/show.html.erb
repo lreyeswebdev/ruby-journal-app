@@ -1,0 +1,16 @@
+<div class = "columns is-centered mt-6">
+    <div class = "column is-half">  
+        <h1 class = "is-size-2 has-text-weight-bold mb-3"><%= @task.name %></h1>
+
+        <div class = "content">
+            <h2 class = "is-size-3 mb-3"><%= @task.category.name %></h2>
+            <br>
+            <%= @task.details %>
+            <h3 class = "is-size-5 mb-2">Deadline:</h3><%= @task.deadline %>
+            <h3 class = "is-size-5 mb-2">Started:</h3><%= @task.started %>
+            <h3 class = "is-size-5 mb-2">Completed:</h3><%= @task.completed %>
+        </div>
+
+        <%= link_to 'Back to Tasks', tasks_path, class: "button" %>
+    </div>
+</div>

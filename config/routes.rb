@@ -7,4 +7,12 @@ Rails.application.routes.draw do
   get '/categories/:id/edit' => 'categories#edit', as: 'edit_category'
   put '/categories/:id' => 'categories#update', as: 'update_category'
   delete 'categories/:id' => 'categories#delete', as: 'delete_category'
+
+  get '/tasks' => 'tasks#index'
+  get '/tasks/new' => 'tasks#new', as: 'new_task'
+  post '/tasks' => 'tasks#create', as: 'create_task'
+  get '/tasks/:id/show' => 'tasks#show', as: 'show_task'
+  get '/tasks/:id/edit' => 'tasks#edit', as: 'edit_task'
+  put '/tasks/:id' => 'tasks#update', as: 'update_task'
+  delete 'tasks/:id' => 'tasks#delete', as: 'delete_task'
 end

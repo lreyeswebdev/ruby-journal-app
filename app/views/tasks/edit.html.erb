@@ -1,0 +1,64 @@
+<div class = "columns is-centered mt-6">
+    <div class = "column is-half">
+        <h1 class = "is-size-2 has-text-weight-bold mb-3">Edit Task</h1>
+        
+        <%= form_with method: :put, scope: :task, url: update_task_path(@task.id), local: true do |f| %>
+        <p>
+        	<% if @task.errors.any? %>
+            	<ul>
+                	<% @task.errors.full_messages.each do |message| %>
+                    	<li style = "color: red">
+                        	* <%= message%>
+                    	</li>
+                	<% end %>
+            	</ul>
+        		<% end %>
+            </p>
+            <br>
+    		<div class = "field">
+    			<div class = "control">
+            		<%= f.label :category_id %>
+            		<br>
+            		<%= f.select :category_id, options_from_collection_for_select(Category.all, :id, :name), { }, { class: "select" } %>
+        		</div>
+    		</div>
+    		<div class = "field">
+        		<div class = "control">
+            		<%= f.label :name %>
+            		<%= f.text_field :name, class: "input" %>
+        		</div>
+    		</div>
+    		<div class = "field">
+        		<div class = "control">
+        			<%= f.label :details %>
+            		<%= f.text_area :details, class: "textarea", style: "margin: 0px; width:583.6px; height: 100px;" %>
+        		</div>
+    		</div>
+    		<div class = "field">
+    			<div class = "control">
+        			<%= f.label :deadline %>
+        			<br>
+        			<%= f.date_field :deadline %>
+        		</div>
+    		</div>
+    		<div class = "field">
+        		<%= f.check_box :started %>
+        		<%= f.label :started, style: "margin-right: 30px" %>
+
+        		<%= f.check_box :completed %>
+        		<%= f.label :completed %>
+    		</div>
+    
+    
+    		<div class =  "field">
+    			<div class = "control">
+            		<%= f.submit :Submit, class: "button is-success" %>
+            		<%= link_to 'Back to Tasks', tasks_path, class: "button" %>
+        		</div>
+    		</div>
+    
+		<% end %>
+
+	</div>
+</div>
+    
