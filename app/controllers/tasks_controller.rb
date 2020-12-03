@@ -32,8 +32,8 @@ class TasksController < ApplicationController
     def update
         @task = Task.find(params[:id])
 
-        if @task.update_attributes(task_params)
-            redirect_to tasks_path
+        if @task.update(task_params)
+            redirect_to category_tasks_path
         else
             render :edit
         end
@@ -42,7 +42,7 @@ class TasksController < ApplicationController
     def destroy
         @task = Task.find(params[:id])
         @task.destroy
-        redirect_to tasks_path
+        redirect_to category_tasks_path
     end
 
     private

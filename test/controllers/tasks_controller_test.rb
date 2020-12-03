@@ -37,7 +37,7 @@ class TasksControllerTest < ActionDispatch::IntegrationTest
 
   test "should update task" do
     put category_task_url(@category, @task.id), params: { task: { name: "update", details: "controller test on update"}}
-    assert_redirected_to category_tasks_url(@task)
+    assert_redirected_to category_tasks_url
   end
 
   test "should destroy task" do
