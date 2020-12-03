@@ -2,7 +2,7 @@
     <div class = "column is-half">
         <h1 class = "is-size-2 has-text-weight-bold mb-3">New Task</h1>
 
-		<%= form_with scope: :task, url: create_task_path, local: true do |f| %>
+		<%= form_with model: [@category, @task], local: true do |f| %>
     		<p>
         		<% if @task.errors.any? %>
             		<ul>
@@ -53,7 +53,7 @@
     		<div class =  "field">
     			<div class = "control">
             		<%= f.submit :Submit, class: "button is-success" %>
-            		<%= link_to 'Back to Tasks', tasks_path, class: "button" %>
+            		<%= link_to 'Back to Tasks', category_tasks_path, class: "button" %>
         		</div>
     		</div>
     

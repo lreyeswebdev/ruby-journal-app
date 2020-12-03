@@ -24,7 +24,7 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should show category" do 
-    get show_category_url(@category)
+    get category_url(@category)
     assert_response :success
   end
 
@@ -34,13 +34,13 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update category" do
-    put update_category_url(@category), params: { category: { name: "update", description: "controller test on update"}}
+    put category_url(@category), params: { category: { name: "update", description: "controller test on update"}}
     assert_redirected_to categories_url
   end
 
-  test "should destroy journal" do
+  test "should destroy journal category" do
     assert_difference('Category.count', -1) do
-      delete delete_category_url(@category)
+      delete category_url(@category)
     end
 
     assert_redirected_to categories_url

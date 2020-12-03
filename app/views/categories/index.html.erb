@@ -17,11 +17,11 @@
         			<% @categories.each do |category| %>
             		<tr>
                 
-                		<td><%= link_to category.name, show_category_path(category) %></td>
+						<td><%= link_to category.name, category_path(category) %></td>
                 		<td><%= category.description %></td>
                 		<td>
                     		<%= link_to 'Edit', edit_category_path(category), class: "button is-small is-warning" %>
-                    		<%= link_to 'Delete', delete_category_path(category), method: :delete, data: {confirm: "Are you sure?"}, class: "button is-small is-danger" %>
+                    		<%= link_to 'Delete', category_path(category), method: :delete, data: {confirm: "Are you sure?"}, class: "button is-small is-danger" %>
                 		</td>
             		</tr>
         			<% end %>
