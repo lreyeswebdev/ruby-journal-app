@@ -29,7 +29,7 @@
             
             			<tr>
                 
-                			<td><%= link_to task.name, category_task_path(task) %></td>
+                			<td><%= link_to task.name, [@category, task] %></td>
                 			<td><%= task.details %></td>
                 			<td><%= task.deadline %></td>
                 			<td><%= task.started %></td>
@@ -37,10 +37,10 @@
                 			<td>
                     			<div class = "field is-grouped">
                     				<div class = "control">
-                            			<%= link_to 'Edit', edit_category_task_path(task), class: "button is-small is-warning" %>
+                            			<%= link_to 'Edit', edit_category_task_path(@category, task), class: "button is-small is-warning" %>
                         			</div>
                         			<div class = "control">
-                            			<%= link_to 'Delete', category_path(task), method: :delete, data: {confirm: "Are you sure?"}, class: "button is-small is-danger" %>
+                            			<%= link_to 'Delete', category_path(@category, task), method: :delete, data: {confirm: "Are you sure?"}, class: "button is-small is-danger" %>
                         			</div>
                     			</div>
                 			</td>
