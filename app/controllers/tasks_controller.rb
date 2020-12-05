@@ -8,6 +8,11 @@ class TasksController < ApplicationController
         
     end
 
+    def today
+        @tasks_incomplete = Task.where(completed: false, deadline: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day).order(deadline: :desc)
+    end
+
+
     def new
         @task = @category.tasks.build
     end
@@ -48,7 +53,9 @@ class TasksController < ApplicationController
 
     private
     def get_category
-        @category = Category.find(params[:category_id])
+        if params[:category_id]
+            @category = Category.find(params[:category_id])
+        end
     end
 
     def set_category

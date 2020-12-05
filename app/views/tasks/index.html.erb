@@ -7,44 +7,44 @@
             <%= link_to 'Create Task', new_category_task_path(@category), class: "button is-info" %>
         </div>
 
-<table class = "table is-striped is-bordered is-fullwidth">
-    <thead>
-        <tr class="th is-selected">
-            <th>Category</th>
-            <th>Name</th>
-            <th>Details</th>
-            <th>Deadline</th>
-            <th>Started</th>
-            <th>Completed</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
+        <table class = "table is-striped is-bordered is-fullwidth">
+            <thead>
+                <tr class="th is-selected">
+                    <th>Category</th>
+                    <th>Name</th>
+                    <th>Details</th>
+                    <th>Deadline</th>
+                    <th>Started</th>
+                    <th>Completed</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
 
-    <tbody>
-        <% @tasks.each do |task| %>
-            <% category = Category.find(task.category.id) %>
-            <tr>
-                <td><%= link_to category.name, category_path(@category) %></td>
-                <td><%= link_to task.name, [@category, task] %></td>
-                <td><%= task.details %></td>
-                <td><%= task.deadline %></td>
-                <td><%= task.started %></td>
-                <td><%= task.completed %></td>
-                <td>
-                    <div class = "field is-grouped" >
-                    	<div class = "control">
-                            <%= link_to 'Edit', edit_category_task_path(@category, task), class: "button is-small is-warning" %>
-                        </div>
-                        <div class = "control">
-                            <%= link_to 'Delete', [@category, task], method: :delete, data: {confirm: "Are you sure?"}, class: "button is-small is-danger" %>
-                        </div>
-                    </div>
-                </td>
-            </tr>
-            
-        <% end %>
-    </tbody>
-<table>
+            <tbody>
+                <% @tasks.each do |task| %>
+                    <% category = Category.find(task.category.id) %>
+                    <tr>
+                        <td><%= link_to category.name, category_path(@category) %></td>
+                        <td><%= link_to task.name, [@category, task] %></td>
+                        <td><%= task.details %></td>
+                        <td><%= task.deadline %></td>
+                        <td><%= task.started %></td>
+                        <td><%= task.completed %></td>
+                        <td>
+                            <div class = "field is-grouped" >
+                                <div class = "control">
+                                    <%= link_to 'Edit', edit_category_task_path(@category, task), class: "button is-small is-warning" %>
+                                </div>
+                                <div class = "control">
+                                    <%= link_to 'Delete', [@category, task], method: :delete, data: {confirm: "Are you sure?"}, class: "button is-small is-danger" %>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    
+                <% end %>
+            </tbody>
+        <table>
 
 	</div>
 </div>
