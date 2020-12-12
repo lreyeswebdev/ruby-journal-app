@@ -27,16 +27,8 @@
                 <% @tasks.each do |task| %>
                     <% category = Category.find(task.category.id) %>
                     <tr>
-                        <td>
-                            
-                            <%= link_to category.name, category_path(@category) %>
-                            
-                        </td>
-                        <td>
-                            
-                            <%= link_to task.name, [@category, task] %>
-                            
-                        </td>
+                        <td><%= link_to category.name, category_path(@category) %></td>
+                        <td><%= link_to task.name, [@category, task] %></td>
                         <td><%= task.details %></td>
                         <td><%= task.deadline %></td>
                         <td><%= task.started %></td>
