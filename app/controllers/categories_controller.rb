@@ -1,4 +1,5 @@
 class CategoriesController < ApplicationController
+    before_action :authenticate_user!
 
     def index
         @categories = Category.all 
@@ -20,7 +21,7 @@ class CategoriesController < ApplicationController
 
     def show
         @category = Category.find(params[:id])
-        @tasks = Task.where(category_id: @category.id)
+        @tasks = Task.where(category_id: @category.id, user_id: current_user.id)
     end
 
     def edit

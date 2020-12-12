@@ -3,4 +3,5 @@ class Task < ApplicationRecord
     validates :details, presence: true
 
     belongs_to :category
+    belongs_to :user
 end

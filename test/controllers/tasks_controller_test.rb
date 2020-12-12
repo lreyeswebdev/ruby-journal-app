@@ -1,10 +1,14 @@
 require 'test_helper'
 
 class TasksControllerTest < ActionDispatch::IntegrationTest
+  include Devise::Test::IntegrationHelpers
 
   setup do
     @task = tasks(:default)
     @category = categories(:two)
+    get '/users/sign_in'
+    sign_in users(:one)
+    post new_user_session_url
   end
 
   test "should get index" do
@@ -36,7 +40,8 @@ class TasksControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update task" do
-    put category_task_url(@task.category_id, @task.id), params: { task: { name: "update", details: "controller test on update"}}
+    put category_task_url(@task.category_id, @task.id), params: { task: { name: "update", details: "controller test on update" }}
+
     assert_redirected_to category_tasks_url
   end
 

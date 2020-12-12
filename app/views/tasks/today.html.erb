@@ -1,12 +1,14 @@
-<div class = "columns is-centered mt-6">
+<div class = "columns is-centered">
     <div class = "column is-two-thirds">
 
-        <h1 class = "is-size-2 has-text-weight-bold mb-3">Tasks to be Completed by Today</h1>
+        <h1 class = "is-size-2 has-text-weight-bold mb-3">Tasks for Today</h1>
 
         <div class = "content">
 
             <% if @tasks_incomplete.length === 0 %>
                 <h2 class = "is-size-3 mb-3">All clear!</h2>
+                <br>
+                <%= link_to 'Categories', categories_path, class: "button" %>
             <% else %>
 
                 <table class = "table is-striped is-bordered is-fullwidth">

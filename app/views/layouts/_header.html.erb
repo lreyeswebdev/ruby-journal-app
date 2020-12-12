@@ -1,0 +1,48 @@
+<section class="hero is-primary">
+  <!-- Hero head: will stick at the top -->
+  <div class="hero-head">
+    <nav class="navbar">
+      <div class="container">
+        <div class="navbar-brand">
+          
+          <% if current_user %>
+            <%= link_to 'Home', root_path, class: 'navbar-item' %>            
+            <%= link_to 'Categories', categories_path, class: 'navbar-item' %>
+                   
+          <% else %>
+            
+            <%= link_to('Login', new_user_session_path, class: 'navbar-item' ) %>  
+            
+          <% end %>
+            
+          </a>
+        </div>
+
+        <div class="navbar-end">
+
+            <% if current_user %>
+              
+              <%= link_to('Logout', destroy_user_session_path, method: :delete, class: 'navbar-item' ) %>
+            <% end %>
+
+        </div>
+
+      </div>
+    </nav>
+  </div>
+
+  <!-- Hero content: will be in the middle -->
+  <div class="hero-body">
+    <div class="container has-text-centered", style = "margin-top: -50px;">
+      <h1 class="title">
+        Everyday Journal
+      </h1>
+      <h2 class="subtitle">
+        Plan and organize your tasks
+      </h2>
+      
+      
+    </div>
+  </div>
+
+</section>

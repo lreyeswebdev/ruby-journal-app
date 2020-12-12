@@ -1,7 +1,9 @@
-<div class = "columns is-centered mt-6">
+<div class = "columns is-centered">
     <div class = "column is-two-thirds">
 
-        <h1 class = "is-size-2 has-text-weight-bold mb-3"><%= @category.name %></h1>
+		<h1 class = "is-size-2 has-text-weight-bold mb-3"><%= @category.name %></h1>
+		
+		this is categories show
         
         <div class = "content">
 			<%= @category.description %>
@@ -9,7 +11,8 @@
 			<br>
 			<%= link_to 'Create Task', new_category_task_path(@category), class: "button is-info" %>
         </div>		
-        
+		
+		
 
 		<div class = "container">
 			<table class = "table is-striped is-bordered is-fullwidth">
@@ -40,7 +43,7 @@
                             			<%= link_to 'Edit', edit_category_task_path(@category, task), class: "button is-small is-warning" %>
                         			</div>
                         			<div class = "control">
-                            			<%= link_to 'Delete', category_path(@category, task), method: :delete, data: {confirm: "Are you sure?"}, class: "button is-small is-danger" %>
+									<%= link_to 'Delete', [@category, task], method: :delete, data: {confirm: "Are you sure?"}, class: "button is-small is-danger" %>
                         			</div>
                     			</div>
                 			</td>

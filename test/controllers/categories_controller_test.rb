@@ -1,8 +1,13 @@
 require 'test_helper'
 
 class CategoriesControllerTest < ActionDispatch::IntegrationTest
+  include Devise::Test::IntegrationHelpers
+
   setup do
     @category = categories(:one)
+    get '/users/sign_in'
+    sign_in users(:one)
+    post new_user_session_url
   end
   
   test "should get index" do

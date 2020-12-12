@@ -1,24 +1,23 @@
 class TasksController < ApplicationController
+    before_action :authenticate_user!
     before_action :get_category
     before_action :set_category, only: [:show, :edit, :update, :destroy]
     
     def index
-        
-        @tasks = @category.tasks 
-        
+        @tasks = Task.where(user_id: current_user.id).order(deadline: :desc)
     end
 
     def today
-        @tasks_incomplete = Task.where(completed: false, deadline: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day).order(deadline: :desc)
+        @tasks_incomplete = Task.where(user_id: current_user.id, completed: false, deadline: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day).order(deadline: :desc)
     end
-
-
+   
     def new
         @task = @category.tasks.build
     end
 
     def create
         @task = @category.tasks.build(task_params)
+        @task.user = current_user
 
         if @task.save
             redirect_to category_tasks_path
@@ -53,9 +52,12 @@ class TasksController < ApplicationController
 
     private
     def get_category
-        if params[:category_id]
-            @category = Category.find(params[:category_id])
-        end
+        
+        @category = Category.find(params[:category_id]) if params[:category_id].present?
+        # if params[:category_id]
+        #     @category = Category.find(params[:category_id])
+        # end
+        
     end
 
     def set_category

@@ -11,8 +11,9 @@
   </head>
 
   <body>
-    <%= render 'categories/header' %>
+    <%= render 'layouts/header' %>
     <div class = container style="max-width: 100%; margin: 50px;">
+      <%= render 'layouts/alerts' %>
       <%= yield %>
     </div>
   </body>
