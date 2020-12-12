@@ -22,4 +22,5 @@ test:
 
 production:
   <<: *default
-  database: db/journal_production.sqlite3
+  adapater: postgresql
+  database: journal_prod
